@@ -1,9 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const xhub = require('express-x-hub');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
+app.use(express.json());
+
+
 
 const webhooks = require('./routes/webhooks');
 

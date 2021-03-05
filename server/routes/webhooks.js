@@ -4,6 +4,7 @@ const router = express.Router();
 
 const FB_WEBHOOK_TOKEN = process.env.FB_WEBHOOK_TOKEN;
 
+
 router.get('/', (req, res) => {
     res.send('webhooks page');
 });
@@ -19,7 +20,8 @@ router.get('/facebook', (req, res) => {
 });
 
 router.post('/facebook', (req, res) => {
-    console.log(req.body)
+    if (req.is)
+    console.log('Facebook request body: ', req.body);
 });
 
 
