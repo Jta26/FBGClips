@@ -1,0 +1,22 @@
+{
+  "name": "facebook-post-ogp-generator",
+  "version": "1.0.0",
+  "description": "This project is dedicated to making links to Facebook posts more adherent to the Open Graph protocol.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jta26/Facebook-post-OGP-generator.git"
+  },
+  "author": "Joel Austin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jta26/Facebook-post-OGP-generator/issues"
+  },
+  "homepage": "https://github.com/Jta26/Facebook-post-OGP-generator#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
