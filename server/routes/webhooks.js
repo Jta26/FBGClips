@@ -20,8 +20,13 @@ router.get('/facebook', (req, res) => {
 });
 
 router.post('/facebook', (req, res) => {
-    if (req.is)
-    console.log('Facebook request body: ', req.body);
+    if (!req.isXHubValid()) {
+        res.sendStatus(401);
+    }
+    
+    console.log(json.stringify(req.body));
+    
+
 });
 
 
