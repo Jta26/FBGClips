@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/facebook', (req, res) => {
+router.post('/facebook', (req, res) => {
     if (req.query['hub.mode'] == 'subscribe' && req.query['hub.verify_token'] == FB_WEBHOOK_TOKEN) {
         res.send(req.query['hub.challenge']);
     }
