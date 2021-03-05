@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 const webhooks = require('./routes/webhooks');
 
-app.use(morgan('tiny'))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 
 app.get('/', (req, res) => {
