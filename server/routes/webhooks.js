@@ -14,10 +14,13 @@ router.get('/facebook', (req, res) => {
         res.send(req.query['hub.challenge']);
     }
     else {
-        // handle the web hook if there is a valid body
-        console.log(req.body);
+        res.sendStatus(400);
     }
-})
+});
+
+router.post('/facebook', (req, res) => {
+    console.log(req.body)
+});
 
 
 
