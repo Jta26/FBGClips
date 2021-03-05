@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 
@@ -14,17 +15,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/webhooks', (req, res) => {
-
-    if (req.query['hub.mode'] == 'subscribe' 
-        && req.query['hub.verify_token'] == 'SuperSecretToken'
-    ) {
-        res.send(req.query['hub.challenge']);
-    }
-    else {
-        res.sendStatus(400);
-    }
-}); 
+app.use('/webhooks', webhooks); 
 
 
 app.listen(port, () => {
