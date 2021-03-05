@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const FB_WEBHOOK_TOKEN = process.env.token;
+const FB_WEBHOOK_TOKEN = process.env.FB_WEBHOOK_TOKEN;
 
 router.get('/', (req, res) => {
     res.send('webhooks page');
