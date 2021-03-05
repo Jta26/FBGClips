@@ -24,7 +24,7 @@ router.post('/facebook', (req, res) => {
         res.sendStatus(401);
     }
     
-    console.log(json.stringify(req.body));
+    console.log(JSON.stringify(req.body));
     
 
 });
