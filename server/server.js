@@ -14,19 +14,13 @@ app.use(express.static('public'));
 
 const webhooks = require('./routes/webhooks');
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
-
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
 app.get('/', async (req, res) => {
-    const data = await embedScraper.scrape();
-    res.set('Content-Type', 'text/html');
-    res.send(Buffer.from(data['data']));
+    res.send('hello world');
 });
 
-
-
 app.use('/webhooks', webhooks); 
-
 
 app.listen(port, () => {
     console.log('listening on port' + port);
