@@ -23,10 +23,8 @@ router.post('/facebook', (req, res) => {
     if (!req.isXHubValid()) {
         res.sendStatus(401);
     }
-    
     console.log(JSON.stringify(req.body));
-    
-
+    res.sendStatus(200);
 });
 
 
