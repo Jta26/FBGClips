@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
-const embedScraper = require('./services/embedscraper');
 const xhub = require('express-x-hub');
 
 const app = express();
