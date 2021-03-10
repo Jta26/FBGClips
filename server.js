@@ -12,6 +12,7 @@ const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
+console.log(process.env.FB_CLIENT_SECRET);
 app.use(xhub({ algorithm: 'sha1', secret: process.env.FB_CLIENT_SECRET }));
 app.use(express.json());
 app.use(express.static('public'));
