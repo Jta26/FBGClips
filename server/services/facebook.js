@@ -21,6 +21,7 @@ const queryVideo = async (videoId) => {
         return null;
     }
     queryResults = handleNoPicture(queryResults);
+    queryResults = handleNoDescription(queryResults);
     return queryResults;
 }
 
@@ -52,9 +53,16 @@ const handleNoPicture = (queryResult) => {
     if (!queryResult.format[0].picture) {
         queryResult.format = [
             {
-                picture: 'https://scontent.fagc1-2.fna.fbcdn.net/v/t1.0-9/157260453_249967856782196_7128383187999542663_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=uU8VkjCLRYIAX8Wkjc4&_nc_ht=scontent.fagc1-2.fna&oh=7cccf38a8c2506e9995efebd8f178129&oe=606E5182'
+                picture: process.env.DEFAULT_PICTURE
             }
         ]
+    }
+    return queryResult;
+}
+
+const handleNoDescription = (queryResult) => {
+    if (!queryResult.description) {
+        queryResult.description = process.env.DEFAULT_DESCRIPTION;
     }
     return queryResult;
 }
