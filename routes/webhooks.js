@@ -1,6 +1,7 @@
-
 const express = require('express');
 const router = express.Router();
+const discordBotService = require('../services/discordbot');
+
 
 const FB_WEBHOOK_TOKEN = process.env.FB_WEBHOOK_TOKEN;
 
@@ -24,6 +25,7 @@ router.post('/facebook', (req, res) => {
         res.sendStatus(401);
     }
     console.log(JSON.stringify(req.body));
+    discordBotService.notifyClipPosted()
     res.sendStatus(200);
 });
 
