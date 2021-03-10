@@ -12,12 +12,11 @@ const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
-console.log(process.env.FB_CLIENT_SECRET);
+app.use(session({secret:process.env.FB_CLIENT_SECRET, resave: true, saveUninitialized: true}));
 app.use(xhub({ algorithm: 'sha1', secret: process.env.FB_CLIENT_SECRET }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-app.use(session({secret:process.env.FB_WEBHOOK_TOKEN, resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
