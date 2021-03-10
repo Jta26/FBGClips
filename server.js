@@ -27,10 +27,10 @@ app.get('/', async (req, res) => {
     res.send('hello world');
 });
 
-app.use('/webhooks', webhooks); 
+app.use('/webhooks', webhooks);
 app.use('/vods', vods);
 app.use('/auth', auth);
 
 app.listen(port, () => {
-    console.log('listening on port ' + port);
+    console.log('FBGClips started on port ' + port);
 })
