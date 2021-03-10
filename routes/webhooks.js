@@ -24,8 +24,8 @@ router.post('/facebook', (req, res) => {
     if (!req.isXHubValid()) {
         res.sendStatus(401);
     }
-    console.log(JSON.stringify(req.body));
-    discordBotService.notifyClipPosted()
+    
+    discordBotService.notifyClipPosted(req.body);
     res.sendStatus(200);
 });
 
