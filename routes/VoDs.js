@@ -45,6 +45,10 @@ const exampleGraphAPIPayload = {
     }
 }
 
+router.get('/', (req,res) => {
+    
+})
+
 
 // Visiting a video by it's video ID from Facebook will deliver and EJS page templated with 
 // meta tags that make sense when linking on other websites.

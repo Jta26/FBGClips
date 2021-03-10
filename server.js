@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 
 const passport = require('passport');
 
+const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
