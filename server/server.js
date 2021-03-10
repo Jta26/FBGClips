@@ -32,5 +32,5 @@ app.use('/vods', vods);
 app.use('/auth', auth);
 
 app.listen(port, () => {
-    console.log('listening on port' + port);
+    console.log('listening on port ' + port);
 })

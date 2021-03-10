@@ -8,7 +8,7 @@ const txtWriter = require('../services/txtWriter');
 passport.use(new Strategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: '/auth/return',
+    callbackURL: process.env.REDIRECT_URL,
 }, async (accessToken, refreshToken, user, callback) => {
     // if the user id is me
     // prevents other people from writing new access tokens.
