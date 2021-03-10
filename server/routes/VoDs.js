@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const FBAPI = require('../services/facebook');
 
-// This is the data returned from the webhook when I make a post or a video.
+// This is an example of the data returned from the webhook when I make a post or a video.
 const exampleWebhookVideoPayload = {
     "object": "page",
     "entry": [{
@@ -47,13 +48,18 @@ const exampleGraphAPIPayload = {
 
 // Visiting a video by it's video ID from Facebook will deliver and EJS page templated with 
 // meta tags that make sense when linking on other websites.
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const objectID = req.params.id;
     // Query the Graph API Here for the item at the ID in the url parameter.
     // const payload = await FacebookAPIService.getPayload(objectID);
-
-    res.render('metaEmbeds', exampleGraphAPIPayload);
-
+    const queryResult = await FBAPI.queryVideo(objectID);
+    if (queryResult != null) {
+        res.render('metaEmbeds', queryResult);
+    }
+    else {
+        // render the video not found page.
+        res.send('video not found');
+    }
 });
 
 
