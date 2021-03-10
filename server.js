@@ -12,7 +12,7 @@ const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
-app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
+app.use(xhub({ algorithm: 'sha1', secret: process.env.FB_CLIENT_SECRET }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
