@@ -3,7 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const Strategy = require('passport-facebook').Strategy;
 const axios = require('axios');
-const txtWriter = require('../services/txtWriter');
 
 passport.use(new Strategy({
     clientID: process.env.FB_CLIENT_ID,
@@ -15,7 +14,6 @@ passport.use(new Strategy({
     if (user.id == process.env.USER_ID) {
         const LLUserAccessToken = await getLongLivedUserAccessToken(accessToken);
         const LLPageAccessToken = await exchangeLLUserTokenForLLPageToken(LLUserAccessToken, user);
-        txtWriter.writeAccessToken(LLPageAccessToken);
     }
     return callback(null, user);
 }));
@@ -59,10 +57,5 @@ router.get('/return',
         }
     }
 );
-
-router.get('/clearAuth', (req, res) => {
-    txtWriter.clearAccessToken();
-    res.sendStatus(200);
-})
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const axios = require('axios');
-const txtWriter = require('../services/txtWriter');
 
 // this is where we will query the graph api for a post or video
 
@@ -31,7 +30,7 @@ const queryPost = async (postId) => {
 // makes a request against the api for the object id.
 // example: "graph.facebook.com/{object-id}?fields={all the fields}"
 const makeQuery = async (objectId, fields) => {
-    const accessToken = txtWriter.readAccessToken();
+    const accessToken = process.env.FB_PAGE_LL_ACCESS_TOKEN;
     const url = `https://graph.facebook.com/${objectId}?fields=${fields.join(',')}&access_token=${accessToken}`;
 
     try {
