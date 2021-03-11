@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="<%= title %>">
-    <meta property="og:image" content="<%= format[0].picture %>">
+    <meta property="og:title" content="<%= message %>">
+    <meta property="og:image" content="<%= picture %>">
     <meta property="og:description" content="<%= description %>">
-    <meta property="og:url" content="https://facebook.com<%= permalink_url %>">
+    <meta property="og:url" content="<%= permalink_url %>">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Facebook Gaming Clips">
-    <title><%= title %></title>
+    <title><%= message %></title>
 </head>
 <body>
     <script>
-        window.location = 'https://www.facebook.com' + '<%= permalink_url %>';
+        window.location = '<%= permalink_url %>';
     </script>
 </body>
 </html>

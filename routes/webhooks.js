@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const discordBotService = require('../services/discordbot');
+const FBAPIService = require('../services/facebook');
+const discordNotificationService = require('../services/discordbot');
 
 
 const FB_WEBHOOK_TOKEN = process.env.FB_WEBHOOK_TOKEN;
@@ -20,15 +21,18 @@ router.get('/facebook', (req, res) => {
     }
 });
 
-router.post('/facebook', (req, res) => {
+router.post('/facebook', async (req, res) => {
     if (!req.isXHubValid()) {
         res.sendStatus(401);
     }
-    
-    discordBotService.notifyClipPosted(req.body);
+
+    const entries = req.body.entry;
+    const idsToNotify = FBAPIService.getIdsToNotify(req.body);
+    const postsToNotify = await FBAPIService.queryIdsToNotify(idsToNotify);
+
+    discordNotificationService.notifyMultiple(postsToNotify);
+
     res.sendStatus(200);
 });
-
-
 
 module.exports = router;

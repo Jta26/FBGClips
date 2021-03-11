@@ -23,14 +23,16 @@ app.use(passport.session());
 const webhooks = require('./routes/webhooks');
 const vods = require('./routes/VoDs');
 const auth = require('./routes/auth');
+const posts = require('./routes/posts');
 
 app.get('/', async (req, res) => {
     res.send('hello world');
 });
 
+app.use('/auth', auth);
 app.use('/webhooks', webhooks);
 app.use('/vods', vods);
-app.use('/auth', auth);
+app.use('/posts', posts);
 
 app.listen(port, () => {
     console.log('FBGClips started on port ' + port);
