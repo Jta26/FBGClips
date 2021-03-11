@@ -50,8 +50,15 @@ const makeQuery = async (objectId, fields) => {
 }
 
 const handleNoPicture = (queryResult) => {
-    if (!queryResult.picture ||  queryResult.full_picture) {
-        queryResult.picture = process.env.DEFAULT_PICTURE;
+    // If there's no full_picture thumbnail, use the full picture
+    if (!queryResult.full_picture) {
+        // if the picture & full_picture doesn't exist, then use the default.
+        if (!queryResult.picture) {
+            queryResult.picture = process.env.DEFAULT_PICTURE;
+        }
+        else {
+            queryResult.picture = queryResult.picture;
+        }
     }
     return queryResult;
 }
