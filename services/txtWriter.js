@@ -17,7 +17,12 @@ const readAccessToken = () => {
     }
 }
 
+const clearAccessToken = () => {
+    fs.unlink('ACT.txt');
+}
+
 module.exports = {
     writeAccessToken,
-    readAccessToken
+    readAccessToken,
+    clearAccessToken
 }

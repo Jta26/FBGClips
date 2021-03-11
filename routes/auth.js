@@ -60,4 +60,8 @@ router.get('/return',
     }
 );
 
+router.get('/clearAuth', (req, res) => {
+    txtWriter.clearAccessToken();
+})
+
 module.exports = router;
