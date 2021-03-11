@@ -26,7 +26,8 @@ router.post('/facebook', async (req, res) => {
         res.sendStatus(401);
     }
 
-    const entries = req.body.entry;
+    // nice to see what kind of data is coming in on the web hook.
+    console.log(req.body);
     const idsToNotify = FBAPIService.getIdsToNotify(req.body);
     const postsToNotify = await FBAPIService.queryIdsToNotify(idsToNotify);
 
