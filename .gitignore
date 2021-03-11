@@ -105,7 +105,7 @@ dist
 
 # TernJS port file
 .tern-port
-server/ACT.txt
+ACT.txt
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
