@@ -62,6 +62,7 @@ router.get('/return',
 
 router.get('/clearAuth', (req, res) => {
     txtWriter.clearAccessToken();
+    res.sendStatus(200);
 })
 
 module.exports = router;
