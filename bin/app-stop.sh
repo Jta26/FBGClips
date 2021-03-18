@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "stopping application"
-pm2 stop server
+~/.nvm/versions/node/v14.16.0/bin/pm2 stop server

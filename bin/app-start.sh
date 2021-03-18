@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "starting application"
-pm2 start server.js
+~/.nvm/versions/node/v14.16.0/bin/pm2 start server.js
