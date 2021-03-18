@@ -50,13 +50,13 @@ const makeQuery = async (objectId, fields) => {
 
 const handleNoPicture = (queryResult) => {
     // If there's no full_picture thumbnail, use the full picture
-    if (!queryResult.full_picture) {
+    if (!queryResult.picture) {
         // if the picture & full_picture doesn't exist, then use the default.
-        if (!queryResult.picture) {
+        if (!queryResult.full_picture) {
             queryResult.picture = process.env.DEFAULT_PICTURE;
         }
         else {
-            queryResult.picture = queryResult.picture;
+            queryResult.picture = queryResult.full_picture;
         }
     }
     return queryResult;
@@ -201,3 +201,8 @@ module.exports = {
     //         }]
     //     }]
     // }
+
+    // Example Live Video
+    // This is the one we would primarily want to send the notification on.
+    // when status is "live" the value's ID field is the video ID
+    // {"object":"page","entry":[{"id":"101259571653026","time":1615437730,"changes":[{"value":{"id":"253937436385238","status":"live"},"field":"live_videos"}]}]}
