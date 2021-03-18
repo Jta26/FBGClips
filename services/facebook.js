@@ -53,7 +53,7 @@ const handleNoPicture = (queryResult) => {
     if (!queryResult.picture) {
         // if the picture & full_picture doesn't exist, then use the default.
         if (!queryResult.full_picture) {
-            queryResult.picture = process.env.DEFAULT_PICTURE;
+            queryResult.picture = process.env.FBGC_DEFAULT_PICTURE;
         }
         else {
             queryResult.picture = queryResult.full_picture;
@@ -64,7 +64,7 @@ const handleNoPicture = (queryResult) => {
 
 const handleNoDescription = (queryResult) => {
     if (!queryResult.description) {
-        queryResult.description = process.env.DEFAULT_DESCRIPTION;
+        queryResult.description = process.env.FBGC_DEFAULT_DESCRIPTION;
     }
     return queryResult;
 }

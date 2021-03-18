@@ -7,11 +7,11 @@ const axios = require('axios');
 passport.use(new Strategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: process.env.REDIRECT_URL,
+    callbackURL: process.env.FBGC_REDIRECT_URL,
 }, async (accessToken, refreshToken, user, callback) => {
     // if the user id is me
     // prevents other people from writing new access tokens.
-    if (user.id == process.env.USER_ID) {
+    if (user.id == process.env.FBGC_USER_ID) {
         const LLUserAccessToken = await getLongLivedUserAccessToken(accessToken);
         const LLPageAccessToken = await exchangeLLUserTokenForLLPageToken(LLUserAccessToken, user);
     }
@@ -36,7 +36,7 @@ const exchangeLLUserTokenForLLPageToken = async (LLUserAccessToken, user) => {
     const url = `https://graph.facebook.com/v10.0/${user.id}/accounts?access_token=${LLUserAccessToken}`;
     const payload = await axios.get(url);
     const gamingPage = payload.data.data.filter((obj) => {
-        return obj.id == process.env.PAGE_ID;
+        return obj.id == process.env.FBGC_PAGE_ID;
     });
     if (gamingPage[0] != null) {
         return gamingPage[0].access_token;
