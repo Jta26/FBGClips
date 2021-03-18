@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-bot.login(process.env.DISCORD_BOT_TOKEN);
+bot.login(process.env.FBGC_DISCORD_BOT_TOKEN);
 
 
 
@@ -10,7 +10,7 @@ bot.on('ready', () => {
 
 const notifyClipPosted = async (notification) => {
     try {
-        const user = await bot.users.fetch(process.env.DISCORD_USER_ID);
+        const user = await bot.users.fetch(process.env.FBGC_DISCORD_USER_ID);
         if (user) {
             const embed = makeDiscordEmbed(notification);
             user.send(embed);
