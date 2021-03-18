@@ -49,7 +49,7 @@ const makeQuery = async (objectId, fields) => {
 }
 
 const handleNoPicture = (queryResult) => {
-    // If there's no full_picture thumbnail, use the full picture
+    // If there's no full_picture thumbnail, use the picture
     if (!queryResult.picture) {
         // if the picture & full_picture doesn't exist, then use the default.
         if (!queryResult.full_picture) {
