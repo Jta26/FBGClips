@@ -1,32 +1,27 @@
 version: 0.0
 os: linux
 files:
-- source: /
- destination: /home/ec2-user/FBGClips
-
+  - source: /
+    destination: /home/ec2-user/FBGClips
 permissions:
-- object: /
-   pattern: "**"
-   owner: ec2-user
-   group: ec2-user
-
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
 hooks:
-BeforeInstall:
-  - location: bin/before-install.sh
-    timeout: 10
-    runas: ec2-user
-
-AfterInstall:
-   - location: bin/install-pkgs.sh
-     timeout: 1200
-     runas: ec2-user
-
-ApplicationStart:
-   - location: bin/app-start.sh
-     timeout: 60
-     runas: ec2-user
-
-ApplicationStop:
-   - location: bin/app-stop.sh
-     timeout: 10
-     runas: ec2-user
+  BeforeInstall:
+    - location: bin/before-install.sh
+      timeout: 10
+      runas: ec2-user
+  AfterInstall:
+    - location: bin/install-pkgs.sh
+      timeout: 1200
+      runas: ec2-user
+  ApplicationStart:
+    - location: bin/app-start.sh
+      timeout: 60
+      runas: ec2-user
+  ApplicationStop:
+    - location: bin/app-stop.sh
+      timeout: 10
+      runas: ec2-user
