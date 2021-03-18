@@ -1,2 +1,3 @@
 #!/bin/bash
-npm start
+echo "starting application"
+pm2 start server.js
