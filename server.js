@@ -12,7 +12,13 @@ const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            scriptSrc:['self', 'facebook.com', 'www.facebook.com']
+        }
+    }
+}));
 app.use(session({secret:process.env.FB_CLIENT_SECRET, resave: true, saveUninitialized: true}));
 app.use(xhub({ algorithm: 'sha1', secret: process.env.FB_CLIENT_SECRET }));
 app.use(express.json());
