@@ -1,12 +1,12 @@
-require('dotenv').config();
+const dotenv = require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const xhub = require('express-x-hub');
 const session = require('express-session');
 const app = express();
 const port = process.env.FBGC_PORT || 3000;
-
 const passport = require('passport');
+const https = require('https');
 
 const discordBot = require('./services/discordbot');
 
@@ -34,6 +34,14 @@ app.use('/webhooks', webhooks);
 app.use('/vods', vods);
 app.use('/posts', posts);
 
-app.listen(port, () => {
-    console.log('FBGClips started on port ' + port);
-})
+if (process.env.NODE_ENV == 'Prod') {
+    const httpsOptions = require('./httpsoptions');
+    https.createServer(httpsOptions, app).listen(port, () => {
+        console.log('HTTPS server listening on port ' + port);
+    });   
+}
+else {
+    app.listen(port, () => {
+        console.log('HTTP server listening on port ' + port);
+    });
+}
