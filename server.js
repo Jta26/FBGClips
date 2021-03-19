@@ -15,8 +15,8 @@ app.set('view engine', 'ejs');
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
-            defaultSrc: ['self'],
-            scriptSrc: ['self', 'unsafe-inline', 'facebook.com', 'www.facebook.com']
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", 'facebook.com', 'www.facebook.com']
         }
     }
 }));
