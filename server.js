@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
+const helmet = require("helmet");
 const morgan = require('morgan');
 const xhub = require('express-x-hub');
 const session = require('express-session');
@@ -11,6 +12,7 @@ const discordBot = require('./services/discordbot');
 
 app.set('view engine', 'ejs');
 
+app.use(helmet());
 app.use(session({secret:process.env.FB_CLIENT_SECRET, resave: true, saveUninitialized: true}));
 app.use(xhub({ algorithm: 'sha1', secret: process.env.FB_CLIENT_SECRET }));
 app.use(express.json());
