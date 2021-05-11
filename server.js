@@ -33,6 +33,7 @@ const vods = require('./routes/VoDs');
 const auth = require('./routes/auth');
 const posts = require('./routes/posts');
 
+
 app.get('/', async (req, res) => {
     res.send('hello world');
 });
@@ -41,6 +42,12 @@ app.use('/auth', auth);
 app.use('/webhooks', webhooks);
 app.use('/vods', vods);
 app.use('/posts', posts);
+
+//FFXIV routes
+const xiv = require('./routes/xiv/xiv');
+const xivHousing = require('./routes/xiv/xivhousing');
+app.use('/xiv', xiv);
+app.use('/xiv/housing', xivHousing);
 
 app.listen(port, () => {
     console.log('HTTP server listening on port ' + port);
